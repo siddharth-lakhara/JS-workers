@@ -16,6 +16,8 @@
   <button id="calculateSum">Calculate Sum</button>
   <button id="changeBackground" class="bg">Change Background</button>
   <button id="sendMessage" class="bg">Send Message to worker</button>
+  <div>In this example, "Calculate Sum" function will do heavy work on a separate thread. Since the main thread is now free, "Change Background" will continue to work</div>
+  <div>However, since the worker thread is now busy calculating sum, the "post message" will get blocked. This will be processed post worker thread is free</div>
   <hr />
 
   <h2>Using shared objects</h2>
