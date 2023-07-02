@@ -29,7 +29,17 @@ sendMsgBtn.addEventListener('click', () => {
   worker.postMessage({type: 'msg', msg: 'Ping'});
 });
 
-
 // *********
 // Shared worker
-// const sharedWorker = new SharedWorker();
+const sharedWorker = new SharedWorker('/scripts/worker2.js', 'Learn Shared worker');
+console.log('Shared Worker', sharedWorker);
+
+const sendSharedMsgBtn = document.getElementById('sendSharedMsg');
+sendSharedMsgBtn.addEventListener('click', () => {
+  sharedWorker.port.postMessage('ping');
+});
+
+// to rcv back msg
+sharedWorker.port.onmessage = ({data: msg}) => {
+  console.log("Main Thread: Shared worker says: ", msg);
+};
