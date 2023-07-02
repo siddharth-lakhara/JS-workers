@@ -1,7 +1,8 @@
 console.log('Script loaded');
 
 // Initialise worker
-const worker = new Worker('/scripts/worker.js');
+// Dedicated worker
+const worker = new Worker('/scripts/dedicated-worker.js');
 
 const calculateSumBtn = document.getElementById('calculateSum');
 const changeBgBtn = document.getElementById('changeBackground');
@@ -27,3 +28,8 @@ changeBgBtn.addEventListener('click', () => {
 sendMsgBtn.addEventListener('click', () => {
   worker.postMessage({type: 'msg', msg: 'Ping'});
 });
+
+
+// *********
+// Shared worker
+// const sharedWorker = new SharedWorker();
